@@ -1,0 +1,63 @@
+
+
+    <!doctype html>
+    <html ng-app="simulatorApp">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+          <script src="bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+        <script src="simulator.js"></script>
+        <link rel="stylesheet" href="simulator.css">
+      </head>
+      <body>
+        <h1>Device Simulator for AWS IoT</h1>
+        <div ng-controller="SimulatorController">
+Things list (scrollable) :
+             <ul style="width: 500px; height: 360px; overflow: auto;overflow-y:scroll;border-style: solid;border-color:grey;list-style: none;">
+                <li ng-repeat="thing in things | orderBy:'thingTypeName' ">
+                    <input type="checkbox" ng-model="thing.selected" ng-true-value="true" ng-false-value="false"> {{thing.thingName}} (type : {{thing.thingTypeName}})  
+                     <ul style="list-style: square;">
+                        <li ng-repeat="obj in thing.state">
+                                {{obj.propName}} :
+                                <input ng-model="obj.propValue" placeholder="State" type="text" style="width:50px;"> 
+                                Reported : {{thing.reported[$index].propValue}}          Desired : {{thing.desired[$index].propValue}}   
+                        </li>
+                    </ul>
+                          
+                    
+                </li>
+            </ul>        
+            <input type="text" ng-model="newThingTypeName" placeholder="New thing type name" style="width:115px;">
+            <button ng-click="createThingType()" style="width:120px;">Create thing type</button>
+            <br>
+            <input type="text" ng-model="newThing.thingName" placeholder="New thing name" style="width:115px;">
+            <select ng-model="newThing.thingTypeName" ng-options="type for type in thingTypes" style="width:120px;">
+                <option value="" disabled selected>Thing type</option>
+            </select>
+            <button ng-click="createThing()" style="width:120px;">Create thing</button>
+            <br>
+            <input type="number" ng-model="copies.number" style="width:115px;" placeholder="Number of copies"></input>
+          <input type="text" ng-model="copies.basename" placeholder="Basename" style="width:115px;">
+           <input type="number" ng-model="copies.firstSuffix" style="width:115px;" placeholder="First suffix"></input>
+           <button ng-click="copyThing()" style="width:120px;">Copy thing</button>
+            <br>
+            <button ng-click="deleteThings()" style="width:120px;">Delete things</button>
+            <br>
+            <input type="text" ng-model="newPropertyName" placeholder="New property name" style="width:115px;">
+          <button ng-click="addProperty()" style="width:120px;">Add property</button>
+            <br>
+            <button ng-click="send()" style="width:120px;">Send state</button>
+            <br>
+            <input type="number" ng-model="dataGenerator.rate" style="width:115px;" placeholder="Messages per second"></input>
+            <button ng-click="startGenerateData2()" style="width:120px;">Generate data</button>
+            <button ng-click="stopGenerateData2()" style="width:120px;">Stop</button>
+            Sent : {{sentUpdates}} Received : {{receivedUpdates}}
+            <button ng-click="resetCounters()" style="width:120px;">Reset counters</button>
+        <br>
+        <br>
+            <textarea ng-model="logs" readonly="readonly" style="height: 80px;width:500px;left: 5px;right: 5px;bottom: 10px;"></textarea>
+       
+        </div>
+      </body>
+    </html>
+

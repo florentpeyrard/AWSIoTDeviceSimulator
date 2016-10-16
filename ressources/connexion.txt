@@ -1,0 +1,9 @@
+{
+	"host": "anmbfjfo981en.iot.us-west-2.amazonaws.com",
+	"port": 8883,
+	"clientId": "Serrure",
+	"thingName": "Serrure",
+	"caCert": "root-CA.crt",
+	"clientCert": "c84c370d61-certificate.pem.crt",
+	"privateKey": "c84c370d61-private.pem.key"
+}

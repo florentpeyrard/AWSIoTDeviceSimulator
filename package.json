@@ -1,0 +1,14 @@
+{
+  "name": "DeviceSimulator",
+  "main": "simulator.html",
+  "window": {
+    "toolbar": true,
+    "resizable": true,
+    "width": 800,
+    "height": 750,
+    "position": "center"
+  },
+  "dependencies": {
+    "json-parser": "^1.1.5"
+  }
+}
