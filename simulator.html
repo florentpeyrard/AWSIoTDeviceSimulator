@@ -30,7 +30,7 @@
         <select ng-model="qos" ng-options="v for v in allowedQos" style="width:120px;">
             <option value="" disabled selected>qos</option>
         </select>
-        <button ng-click="start()" style="width:120px;">Start</button>
+        <button ng-click="start()" ng-disabled="started" style="width:120px;">Start</button>
         <br>
         <input type="text" ng-model="newThingTypeName" placeholder="New thing type name" style="width:115px;">
         <button ng-click="createThingType()" style="width:120px;">Create thing type</button>

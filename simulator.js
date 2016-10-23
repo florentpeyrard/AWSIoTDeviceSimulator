@@ -33,6 +33,7 @@ angular.module('simulatorApp', ['angular-toArrayFilter'])
         $scope.receivedUpdates = 0;
         $scope.qos = null;
         $scope.allowedQos = ["0","1","2"];
+        $scope.started = false;
 
         $scope.parseJSON = function (text) {
             return JSON.parse(text);
@@ -675,6 +676,7 @@ angular.module('simulatorApp', ['angular-toArrayFilter'])
                 $scope.log('Select QoS');
             }
             else{
+            $scope.started = true;
             $scope.listThingTypes();
             //retrieve thing types list from the things registry on AWS
             $scope.listThings();                
