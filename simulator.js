@@ -102,9 +102,9 @@ angular.module('simulatorApp', ['angular-toArrayFilter'])
                         //we create one connection per device to be more realistic, even if one client id for all things name (used in topic paths) is allowed by AWS. In contrast, one certificate is shared among all connections, because handling certificates is a bit heavier.
                         //$scope.log('creating a connection for thing '+data.things[i].thingName)
                         $scope.things[i]['device'] = devicesdk.device({
-                            keyPath: "c84c370d61-private.pem.key",
-                            certPath: "c84c370d61-certificate.pem.crt",
-                            caPath: "rootCA.pem.crt",
+                            keyPath: "TODO",
+                            certPath: "TODO",
+                            caPath: "TODO",
                             clientId: data.things[i].thingName,
                             region: "us-west-2"
                         });
